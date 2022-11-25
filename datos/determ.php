@@ -43,7 +43,7 @@ public function Ingresar(){
 			// window.location=\"".$uri."/wp-admin/admin.php\";
 			// </script>";
 			echo    "<script type=\"text/javascript\">
-					window.location=\"".$uri."\mundial\presentacion.php\";
+					window.location=\"".$uri."/mundial/presentacion.php\";
 					</script>";
 			exit;
 			/*
