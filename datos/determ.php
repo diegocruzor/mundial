@@ -43,11 +43,10 @@ public function Ingresar(){
 			// window.location=\"".$uri."/wp-admin/admin.php\";
 			// </script>";
 			echo    "<script type=\"text/javascript\">
-					window.location=\"".$uri."/mundial/presentacion.php\";
+					window.location=\"".$uri."/presentacion.php\";
 					</script>";
-			exit;
 			/*
-			Así estaba antes de subir a Heroku
+						Así estaba antes de subir a Heroku
 			echo 	"<script type=\"text/javascript\">
 					window.location=\"".$uri."/mundial/presentacion.php\";
 					</script>";
