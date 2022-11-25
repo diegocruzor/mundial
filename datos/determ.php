@@ -51,7 +51,7 @@ public function Ingresar(){
 			echo 	"<script type=\"text/javascript\">
 					window.location=\"".$uri."/mundial/presentacion.php\";
 					</script>";
-			/*
+			*/
 		} 
 	}
 }
