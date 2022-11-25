@@ -37,7 +37,7 @@
 			}
 			?>
 			<div class="ContentForm">
-				<form action="" method="post" name="FormEntrar">
+				<form action="presentacion.php" method="post" name="FormEntrar">
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
 						<input type="text" class="form-control" name="Usr" placeholder="Tu usuario" id="Usr" aria-describedby="sizing-addon1" required>
