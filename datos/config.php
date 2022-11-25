@@ -1,6 +1,6 @@
 <?php 
 class Datos_conexion {
-	# Setters: Sets the database access information as constants:
+	# Setters: Sets the database access information as constants (in digitalocean): 
 	private $host_="db-mysql-nyc1-78181-do-user-12327901-0.b.db.ondigitalocean.com";
 	private $usuario_="doadmin";
 	private $pasword_="AVNS_2H3VQuYrisskEq6HqSk";
