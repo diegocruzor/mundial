@@ -1,5 +1,20 @@
 <?php
 require_once 'datos/config.php';
+# Validar si se encuenra conectado un usuario registrado
+if (!isset($_SESSION['i'])) $_SESSION['i'] = 0;
+if($xcon = conectarBd()){
+	# Consulta haciendo uso de PDO
+	$sql1 = $xcon->query("SELECT * FROM participantes WHERE Idparticipante = '".$_SESSION['i']."'");
+	if($r = $sql1->fetch()) { echo "Funciona"; }
+	else {
+		$xcon = Null;
+		header('Location: index.php');
+	}
+}
+else header('Location: index.php'); 
+
+// Establecer la zona horaria predeterminada a usar. Disponible desde PHP 5.1
+date_default_timezone_set('America/Bogota');
 
 //para la sección equipos, construcción de cada tabla
 function cuadro($xcon, $letra) {
@@ -286,13 +301,29 @@ function ingresarPronosticos($xcon) {
 		$sql = "UPDATE resultados SET Resultado_2 = ".$value.", EstadoResultado = 1 WHERE IdParticipante = '".$_SESSION["i"]."' AND NoPartido = ".$res2;
 		$r = mysqli_query($xcon, $sql) or die('No es posible ingresar la informaci&oacute;n en este momento, int&eacute;ntalo m&aacute;s tarde. Error: '.mysqli_error($xcon));
 	}
+
+	/*
+	$sql = $conn->prepare("SELECT COUNT(*) AS num_rows FROM zip WHERE zip_code = :zip");
+	$sql->execute();
+	$count = (int)$sql->fetchColumn();
+	if($count) echo "Success";
+	else echo "Fail";
+	*/
 }
 
 function seleccionarGrupo($xcon) {
-	$sql = "SELECT DISTINCT Grupo FROM resultados WHERE IdParticipante = '".$_SESSION["i"]."' AND EstadoResultado = 0 ORDER BY NoPartido ASC";
-	$r = mysqli_query($xcon, $sql) or die('No es posible seleccionar un grupo. Error: '.mysqli_error($xcon));
-	if ($datos = mysqli_fetch_row($r)) return $datos[0];
-	else return "A"; 	
+	#$sql = "SELECT DISTINCT Grupo FROM resultados WHERE IdParticipante = '".$_SESSION["i"]."' AND EstadoResultado = 0 ORDER BY NoPartido ASC";
+	#$sql = $xcon->query("SELECT DISTINCT Grupo FROM resultados WHERE IdParticipante = '".$_SESSION["i"]."' AND EstadoResultado = 0 ORDER BY NoPartido ASC");
+	try {
+		$sql = $xcon->query("SELECT min(Grupo) FROM resultados WHERE IdParticipante = '94533535' AND EstadoResultado = 0");
+		if($grupo = $sql->fetch()) {
+			return $grupo[0];
+		}
+		else return "A"; 	
+	} 
+	catch (Exception $e) {
+		echo "Error: ".$e->getMessage();
+	}	
 }
 
 function convertirFecha($fecha) {

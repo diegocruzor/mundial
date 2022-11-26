@@ -1,21 +1,6 @@
 <?php
 	session_start();
 	require_once 'datos/functions.php';
-	//
-	if (!isset($_SESSION['i'])) $_SESSION['i'] = 0;
-	//
-	$xcon = conectarBd(); 	
-	if (!$xcon) {
-die('Error de Conexión (' . mysqli_connect_errno() . ') '
-. mysqli_connect_error());
-	}
-	//
-	$sql1 = "SELECT * FROM participantes WHERE Idparticipante = '".$_SESSION['i']."'";;
-	$r1 = mysqli_query($xcon, $sql1) or die("No se encontró el usuario. Error: ".mysqli_error($xcon));
-	if ($datos1 = mysqli_fetch_array($r1, MYSQLI_ASSOC)){}
-	else 	header('Location: index.php');
-	// Establecer la zona horaria predeterminada a usar. Disponible desde PHP 5.1
-date_default_timezone_set('UTC');
 ?>
 <!DOCTYPE html Content-type: text/html; charset=utf-8>
 <html lang="es">
@@ -41,6 +26,7 @@ date_default_timezone_set('UTC');
 					<input type="text" class="form-control" name="reloj" style="background-color : F3EDED; color : Black; font-family : Arial; font-size : 10pt; text-align : center;" aria-describedby="sizing-addon1" disabled> 
 				</form>
 				Pulsa sobre la opci&oacute;n deseada: <br><br>
+				<!--
 				<form name="form2" method="post" action="clasificaciongeneral.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ClasifPolla" type="submit">Clasificaci&oacute;n Polla</button>
 				</form>
@@ -56,7 +42,8 @@ date_default_timezone_set('UTC');
 				<form name="form3" method="post" action="resultadoshoy.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ResHoy" type="submit">Resultados Hoy</button>
 				</form>
-				<?php echo tipoUsuario($xcon, $_SESSION['i']); ?>
+				-->
+				<?php # echo tipoUsuario($xcon, $_SESSION['i']); # Acciones administrativas?>
 				<!-- Este último formulario estaba en comentarios -->
 				<form name="form8" method="post" action="mispronosticos.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ResHoy" type="submit">Ingreso Mis Pron&oacute;sticos</button>
@@ -73,7 +60,7 @@ date_default_timezone_set('UTC');
 			</center>
 			</font>
 		</div>		
-	<?php mysqli_close($xcon); ?>						
+	<?php $xcon = Null; ?>						
 </body>
 	<!-- vinculando a libreria Jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

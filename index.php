@@ -30,14 +30,23 @@
 			</form>
 			<br>
 			<?php
-			if(!empty($_POST['Usr']) && !empty($_POST['pwd'])){
-				$iniciar=new Login($_POST['Usr'],$_POST['pwd']);
-				$iniciar->Ingresar();
-				echo $iniciar->MostrarMsg();
+				if(!empty($_POST['Usr']) && !empty($_POST['pwd'])){
+					$iniciar=new Login($_POST['Usr'],$_POST['pwd']);
+					$iniciar->Ingresar();
+					echo $iniciar->MostrarMsg();
+				}
+			/*
+			require_once 'datos/config.php';
+			$xcon = conectarBd();
+			$sql = $xcon->query("SELECT * FROM participantes WHERE IdParticipante='94533535'");
+			if($res = $sql->fetch()) {
+				print $res['Nombre'];
 			}
+			$xcon = Null;
+			*/
 			?>
 			<div class="ContentForm">
-				<form action="presentacion.php" method="post" name="FormEntrar">
+				<form action="" method="post" name="FormEntrar">
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
 						<input type="text" class="form-control" name="Usr" placeholder="Tu usuario" id="Usr" aria-describedby="sizing-addon1" required>

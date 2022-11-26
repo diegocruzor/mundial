@@ -6,14 +6,18 @@
 	//
 	$xcon = conectarBd(); 	
 	if (!$xcon) {
-    die('Error de Conexión (' . mysqli_connect_errno() . ') '
+    die('Error de Conexiï¿½n (' . mysqli_connect_errno() . ') '
             . mysqli_connect_error());
 	}
 	//
 	$sql1 = "SELECT * FROM participantes WHERE Idparticipante = '".$_SESSION['i']."'";;
-	$r1 = mysqli_query($xcon, $sql1) or die("No se encontró el usuario. Error: ".mysqli_error($xcon));
-	if ($datos1 = mysqli_fetch_array($r1, MYSQLI_ASSOC)){}
-	else 	header('Location: index.php');
+	if($xcon->query($sql1)) {}
+	else header('Location: index.php');
+	
+	#$r1 = mysqli_query($xcon, $sql1) or die("No se encontrï¿½ el usuario. Error: ".mysqli_error($xcon));
+	#if ($datos1 = mysqli_fetch_array($r1, MYSQLI_ASSOC)){}
+	#else 	header('Location: index.php');
+	
 	// Establecer la zona horaria predeterminada a usar. Disponible desde PHP 5.1
     date_default_timezone_set('UTC');
 ?>
