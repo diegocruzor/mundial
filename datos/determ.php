@@ -59,10 +59,10 @@ class Login{
 				// window.location=\"".$uri."/wp-admin/admin.php\";
 				// </script>";
 				echo    "<script type=\"text/javascript\">
-						window.location=\"".$url."/mundial/presentacion.php\";
+						window.location=\"".$url."/presentacion.php\";
 						</script>";
 				/*
-							Así estaba antes de subir a Heroku
+				# Trabajar con esta línea de forma local
 				echo 	"<script type=\"text/javascript\">
 						window.location=\"".$uri."/mundial/presentacion.php\";
 						</script>";
