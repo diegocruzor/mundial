@@ -1,6 +1,6 @@
 <?php
-	#session_start();
-	#require_once 'datos/functions.php';
+	session_start();
+	require_once 'datos/functions.php';
 ?>
 <!DOCTYPE html Content-type: text/html; charset=utf-8>
 <html lang="es">
@@ -45,6 +45,7 @@
 				-->
 				<?php # echo tipoUsuario($xcon, $_SESSION['i']); # Acciones administrativas?>
 				<!-- Este último formulario estaba en comentarios -->
+				<?php print $_SESSION['i']; ?>
 				<form name="form8" method="post" action="mispronosticos.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ResHoy" type="submit">Ingreso Mis Pron&oacute;sticos</button>
 				</form>
