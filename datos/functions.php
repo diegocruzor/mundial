@@ -35,11 +35,11 @@ function tipoUsuario($xcon, $idUsuario) {
 	if ($usuario = $sql->fetch()) $valor = $usuario["tipoUsuario"];
 	if ($valor == 1){
 		$imprimir = "<form name='form9' method='post' action='ingresoresultados.php'> 
-        		<button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult' type='submit'>Ingreso Resultados</button>
-        	</form>
-        	<form name='form10' method='post' action='ingresarusuario.php'> 
-        		<input type='hidden' name='ing' id='ing' value='0'><button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult2' type='submit'>Ingresar Usuario Nuevo</button>
-        	</form>";
+						<button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult' type='submit'>Ingreso Resultados</button>
+					</form>
+					<form name='form10' method='post' action='ingresarusuario.php'> 
+						<input type='hidden' name='ing' id='ing' value='0'><button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult2' type='submit'>Ingresar Usuario Nuevo</button>
+					</form>";
 	}
 	else $imprimir = "";
 	return $imprimir;
@@ -61,11 +61,21 @@ function seleccionarGrupo($xcon) {
 	}	
 }
 
+# Función para convertir fechas
+function convertirFecha($fecha) {
+	
+	$mesTexto = array ("Anio", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre");
+	$fechaDet = explode("-", $fecha);
+	$mes = (int) $fechaDet[1];
+	$fechaTexto = $fechaDet[2]." de ".$mesTexto[$mes]." de ".$fechaDet[0];
+	return $fechaTexto;
+}
+
 # Función para imprimir en la aplicación los partidos de los eqipos en la primera fase
 function impTblPronosticosFase1($xcon, $grupo) {
 	$res[] = array();
 	echo "<h3>Grupo ".$grupo."</h3>";
-	$sql = $xcon->query("SELECT * FROM partidospronosticosqatar2022 WHERE grupo = '".$grupo."' ORDER BY idPartido ASC");
+	$sql = $xcon->query("SELECT * FROM PartidosPronosticosQatar2022 WHERE grupo = '".$grupo."' ORDER BY idPartido ASC");
 	while($partido = $sql->fetch()) {
 		echo "<table border='0' style='font-family:Tahoma, Geneva, sans-serif; font-size:11px;' width='80%'>
 				<tr>
@@ -108,12 +118,12 @@ function headers(){
 	</head>
 
 	<body onLoad="Reloj()">
-     	<div id="Contenedor">
-			 <div class="Icon"><img src="images/LogoQatar.png"></span></div>
+		<div id="Contenedor">
+			<div class="Icon"><img src="images/LogoQatar.png"></span></div>
 			<font face="Verdana, Geneva, sans-serif">
 			<center>
-        		<div class="ContentForm">
-    				<h1>Acierta en Qatar 2022</h1>
+				<div class="ContentForm">
+					<h1>Acierta en Qatar 2022</h1>
 					<form name="form_reloj"> 
 						<input type="text" class="form-control" name="reloj" style="background-color : F3EDED; color : Black; font-family : Arial; font-size : 10pt; text-align : center;" aria-describedby="sizing-addon1" disabled> 
 					</form>
@@ -134,12 +144,12 @@ function headers2(){
 	</head>
 
 	<body onLoad="Reloj()">
-     	<div id="Fase2">
+		<div id="Fase2">
 			<div class="Icon"><img src="images/LogoQatar.png"></span></div>
 			<font face="Verdana, Geneva, sans-serif">
 			<center>
-        		<div class="ContentForm">
-    				<h1>Acierta en Qatar 2022</h1>
+				<div class="ContentForm">
+					<h1>Acierta en Qatar 2022</h1>
 					<form name="form_reloj"> 
 						<input type="text" class="form-control" name="reloj" style="background-color : F3EDED; color : Black; font-family : Arial; font-size : 10pt; text-align : center;" aria-describedby="sizing-addon1" disabled> 
 					</form>
@@ -150,10 +160,10 @@ function footers() {
 ?>       
 						</tbody>	
 					</table>
-        			<form name="volver" method="post" action="presentacion.php"> 
-        				<button class="btn btn-lg btn-primary btn-block btn-signin" id="Volver" type="submit">Volver</button>
-        			</form>
-	 				____________________________________________
+					<form name="volver" method="post" action="presentacion.php"> 
+						<button class="btn btn-lg btn-primary btn-block btn-signin" id="Volver" type="submit">Volver</button>
+					</form>
+					____________________________________________
 					<br><font face="Trebuchet MS, Arial, Helvetica, sans-serif" size="2">Dromasio &copy 2022</font>
 				</div>
 			</center>
