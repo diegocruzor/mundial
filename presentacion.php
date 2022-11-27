@@ -24,8 +24,8 @@
 				<form name="form_reloj"> 
 					<input type="text" class="form-control" name="reloj" style="background-color : F3EDED; color : Black; font-family : Arial; font-size : 10pt; text-align : center;" aria-describedby="sizing-addon1" disabled> 
 				</form>
-				Pulsa sobre la opci&oacute;n deseada: <br><br>
-				<?php print $_SESSION['i']; ?>
+				Pulsa sobre la opci&oacute;n deseada: <?php print $_SESSION['i']; ?><br><br>
+				
 				<!--
 				<form name="form2" method="post" action="clasificaciongeneral.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ClasifPolla" type="submit">Clasificaci&oacute;n Polla</button>
