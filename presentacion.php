@@ -44,7 +44,7 @@
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ResHoy" type="submit">Resultados Hoy</button>
 				</form>
 				-->
-				<?php echo tipoUsuario($xcon, $_SESSION['i']); */ # Acciones administrativas?>
+				<?php echo tipoUsuario($xcon, $_SESSION['i']); # Acciones administrativas ?>
 				<!-- Este último formulario estaba en comentarios -->
 				<form name="form8" method="post" action="mispronosticos.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ResHoy" type="submit">Ingreso Mis Pron&oacute;sticos</button>
