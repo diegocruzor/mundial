@@ -348,7 +348,7 @@ function convertirFecha($fecha) {
 function tipoUsuario($xcon, $idUsuario) {
 	$sql = $xcon->query("SELECT * FROM participantes WHERE IdParticipante = '".$idUsuario."'");
 	//$r = mysqli_query($xcon, $sql);
-	if ($usuario = $sql->fetch()) $valor = $usuario["TipoUsuario"];
+	if ($usuario = $sql->fetch()) $valor = $usuario["tipoUsuario"];
 	if ($valor == 1){
 		$imprimir = "<form name='form9' method='post' action='ingresoresultados.php'> 
         		<button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult' type='submit'>Ingreso Resultados</button>

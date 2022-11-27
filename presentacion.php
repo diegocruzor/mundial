@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require_once 'datos/functions.php';
 ?>
 <!DOCTYPE html Content-type: text/html; charset=utf-8>
 <html lang="es">
@@ -24,7 +25,7 @@
 				<form name="form_reloj"> 
 					<input type="text" class="form-control" name="reloj" style="background-color : F3EDED; color : Black; font-family : Arial; font-size : 10pt; text-align : center;" aria-describedby="sizing-addon1" disabled> 
 				</form>
-				Pulsa sobre la opci&oacute;n deseada: <?php echo $_SESSION['i']; ?><br><br>
+				Pulsa sobre la opci&oacute;n deseada:<br><br>
 				
 				<!--
 				<form name="form2" method="post" action="clasificaciongeneral.php"> 

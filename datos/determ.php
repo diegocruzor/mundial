@@ -59,15 +59,17 @@ class Login{
 				// "<script type=\"text/javascript\">
 				// window.location=\"".$uri."/wp-admin/admin.php\";
 				// </script>";
+				/*
+				# Trabajar con esta linea en heroku
 				echo    "<script type=\"text/javascript\">
 						window.location=\"".$url."/presentacion.php\";
 						</script>";
-				/*
+				*/
 				# Trabajar con esta línea de forma local
 				echo 	"<script type=\"text/javascript\">
 						window.location=\"".$uri."/mundial/presentacion.php\";
 						</script>";
-				*/
+				
 			} 
 		}
 	}
