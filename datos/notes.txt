@@ -1,0 +1,8 @@
+PHP Version => 7.4.1
+
+Instalación de memcached en Windows:
+https://linuxhint.com/install-memcached-windows/
+
+
+
+
