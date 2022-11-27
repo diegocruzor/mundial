@@ -26,6 +26,7 @@
 					<input type="text" class="form-control" name="reloj" style="background-color : F3EDED; color : Black; font-family : Arial; font-size : 10pt; text-align : center;" aria-describedby="sizing-addon1" disabled> 
 				</form>
 				Pulsa sobre la opci&oacute;n deseada: <br><br>
+				<?php print $_SESSION['i']; ?>
 				<!--
 				<form name="form2" method="post" action="clasificaciongeneral.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ClasifPolla" type="submit">Clasificaci&oacute;n Polla</button>
@@ -45,7 +46,6 @@
 				-->
 				<?php # echo tipoUsuario($xcon, $_SESSION['i']); # Acciones administrativas?>
 				<!-- Este último formulario estaba en comentarios -->
-				<?php print $_SESSION['i']; ?>
 				<form name="form8" method="post" action="mispronosticos.php"> 
 					<button class="btn btn-lg btn-primary btn-block btn-signin" id="ResHoy" type="submit">Ingreso Mis Pron&oacute;sticos</button>
 				</form>
