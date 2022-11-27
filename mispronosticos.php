@@ -6,7 +6,6 @@
 	else $f = $_POST['f'];
 	
 	if ($f != "") ingresarPronosticos($xcon);
-	print $_SESSION['i'];
 	$grupo = seleccionarGrupo($xcon);
 ?>
 <!DOCTYPE html Content-type: text/html; charset=utf-8>
