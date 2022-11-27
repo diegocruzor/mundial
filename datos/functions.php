@@ -28,6 +28,7 @@ date_default_timezone_set('America/Bogota');
 
 # FUNCIONES para el flujo de la infomración en la aplicación
 
+# Función para mostrar opciones de configuración y acciones al admimistrador
 function tipoUsuario($xcon, $idUsuario) {
 	$sql = $xcon->query("SELECT * FROM participantes WHERE IdParticipante = '".$idUsuario."'");
 	//$r = mysqli_query($xcon, $sql);
@@ -43,6 +44,55 @@ function tipoUsuario($xcon, $idUsuario) {
 	else $imprimir = "";
 	return $imprimir;
 }
+
+# Función para seleccionar el grupo en el que se encuentran los equipós para los resultados
+function seleccionarGrupo($xcon) {
+	#$sql = "SELECT DISTINCT Grupo FROM resultados WHERE IdParticipante = '".$_SESSION["i"]."' AND EstadoResultado = 0 ORDER BY NoPartido ASC";
+	#$sql = $xcon->query("SELECT DISTINCT Grupo FROM resultados WHERE IdParticipante = '".$_SESSION["i"]."' AND EstadoResultado = 0 ORDER BY NoPartido ASC");
+	try {
+		$sql = $xcon->query("SELECT min(Grupo) FROM resultados WHERE IdParticipante = '94533535' AND EstadoResultado = 0");
+		if($grupo = $sql->fetch()) {
+			return $grupo[0];
+		}
+		else return "A"; 	
+	} 
+	catch (Exception $e) {
+		echo "Error: ".$e->getMessage();
+	}	
+}
+
+# Función para imprimir en la aplicación los partidos de los eqipos en la primera fase
+function impTblPronosticosFase1($xcon, $grupo) {
+	$res[] = array();
+	echo "<h3>Grupo ".$grupo."</h3>";
+	$sql = $xcon->query("SELECT * FROM partidospronosticosqatar2022 WHERE grupo = '".$grupo."' ORDER BY idPartido ASC");
+	while($partido = $sql->fetch()) {
+		echo "<table border='0' style='font-family:Tahoma, Geneva, sans-serif; font-size:11px;' width='80%'>
+				<tr>
+					<td colspan='3' align='center' height='20'><i>".$partido["lugar"].", ".convertirFecha($partido["fecha"]).", ".$partido["hora"]."</i></td>
+				</tr>
+				<tr>";
+		$sql2 = $xcon->query("SELECT * FROM equipos WHERE Id = '".$partido["idEquipo1"]."'");
+		if ($datos = $sql2->fetch()) {
+			echo "<td align='center' style='font-family:Tahoma, Geneva, sans-serif; font-size:10px;'>".$partido['Equipo1']."<br><img src='".$datos["Bandera"]."' width='50%'>
+			<input type='text' name='R1[".$partido['idPartido']."]' placeholder='-' id='R1[".$partido['idPartido']."]' size='2' aria-describedby='sizing-addon1' style='text-align : center;' required></td><td>";
+		}
+		echo "<font size='5px'> - </font>";
+		$sql3 = $xcon->query("SELECT * FROM equipos WHERE Id = '".$partido['idEquipo2']."'");
+		if ($datos2 = $sql3->fetch()) {
+			echo "</td><td align='center' style='font-family:Tahoma, Geneva, sans-serif; font-size:10px;'>".$partido['Equipo2']."<br>
+				<input type='text' name='R2[".$partido['idPartido']."]' placeholder='-' id='R2[".$partido['idPartido']."]' size='2' aria-describedby='sizing-addon1' style='text-align : center;' required>
+				<img src='".$datos2["Bandera"]."' width='50%'></td></tr><tr><td colspan='3'>&nbsp;</td></tr>";
+		}
+	}
+	echo "<tr><td colspan='3'><input type='hidden' name='f' value='".$grupo."'><button class='btn btn-lg btn-primary btn-block btn-signin' id='Sig' type='submit'>Siguiente</button></td></tr></table><br>";
+}		  
+
+
+
+
+
+# FUNCIONES para mostrar inormación en la aplicación
 
 function headers(){
 ?>
