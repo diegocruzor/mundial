@@ -1,11 +1,21 @@
 <?php
 require_once 'datos/config.php';
 # Validar si se encuenra conectado un usuario registrado
+//Si existe la sesión "user"..., la guardamos en una variable.
+if (isset($_SESSION['i'])){
+	$text=$_SESSION['i'];
+}else{
+	header('Location: index.php');//Aqui lo redireccionas al login para no ingresar a este apartado sino esta autenticado.
+	die() ;
+}
+header('Content-Type: text/html; charset=UTF-8');
+/*
 if (!isset($_SESSION['i'])) $_SESSION['i'] = 0;
+*/
 if($xcon = conectarBd()){
 	# Consulta haciendo uso de PDO
 	$sql1 = $xcon->query("SELECT * FROM participantes WHERE Idparticipante = '".$_SESSION['i']."'");
-	if($r = $sql1->fetch()) { echo "Funciona"; }
+	if($r = $sql1->fetch()) { /*echo "Funciona"; */ }
 	else {
 		$xcon = Null;
 		header('Location: index.php');

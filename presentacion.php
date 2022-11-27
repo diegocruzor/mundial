@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	require_once 'datos/functions.php';
 ?>
 <!DOCTYPE html Content-type: text/html; charset=utf-8>
 <html lang="es">

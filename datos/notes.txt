@@ -4,5 +4,7 @@ Instalación de memcached en Windows:
 https://linuxhint.com/install-memcached-windows/
 
 
+https://stackoverflow.com/questions/39107027/how-to-install-php-7-extension-memcache-on-windows
+
 
 
