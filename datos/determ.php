@@ -50,6 +50,7 @@ class Login{
 				*/
 				//por lo es correcto el logeo realizamos la redireccion
 				$_SESSION['i'] = $this->Usr_;
+				#$_COOKIE['i'] = $this->Usr_;
 				if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) $uri = 'https://';
 				else $url = 'http://';
 				$url .= $_SERVER['HTTP_HOST'];
