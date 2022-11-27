@@ -26,6 +26,25 @@ else header('Location: index.php');
 // Establecer la zona horaria predeterminada a usar. Disponible desde PHP 5.1
 date_default_timezone_set('America/Bogota');
 
+# FUNCIONES para el flujo de la infomración en la aplicación
+
+function tipoUsuario($xcon, $idUsuario) {
+	$sql = $xcon->query("SELECT * FROM participantes WHERE IdParticipante = '".$idUsuario."'");
+	//$r = mysqli_query($xcon, $sql);
+	if ($usuario = $sql->fetch()) $valor = $usuario["tipoUsuario"];
+	if ($valor == 1){
+		$imprimir = "<form name='form9' method='post' action='ingresoresultados.php'> 
+        		<button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult' type='submit'>Ingreso Resultados</button>
+        	</form>
+        	<form name='form10' method='post' action='ingresarusuario.php'> 
+        		<input type='hidden' name='ing' id='ing' value='0'><button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult2' type='submit'>Ingresar Usuario Nuevo</button>
+        	</form>";
+	}
+	else $imprimir = "";
+	return $imprimir;
+}
+
+/*
 //para la sección equipos, construcción de cada tabla
 function cuadro($xcon, $letra) {
     
@@ -345,22 +364,6 @@ function convertirFecha($fecha) {
 	return $fechaTexto;
 }
 
-function tipoUsuario($xcon, $idUsuario) {
-	$sql = $xcon->query("SELECT * FROM participantes WHERE IdParticipante = '".$idUsuario."'");
-	//$r = mysqli_query($xcon, $sql);
-	if ($usuario = $sql->fetch()) $valor = $usuario["tipoUsuario"];
-	if ($valor == 1){
-		$imprimir = "<form name='form9' method='post' action='ingresoresultados.php'> 
-        		<button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult' type='submit'>Ingreso Resultados</button>
-        	</form>
-        	<form name='form10' method='post' action='ingresarusuario.php'> 
-        		<input type='hidden' name='ing' id='ing' value='0'><button class='btn btn-lg btn-primary btn-block btn-signin' id='IngResult2' type='submit'>Ingresar Usuario Nuevo</button>
-        	</form>";
-	}
-	else $imprimir = "";
-	return $imprimir;
-}
-
 function ingresoUsuario($xcon, $datUsr) {
 	$sql = "INSERT INTO participantes VALUES('$datUsr[1]', '$datUsr[0]', $datUsr[3], '$datUsr[2]', 0)";
 	$r = mysqli_query($xcon, $sql);
@@ -638,7 +641,7 @@ function mostrarEncuentros($xcon, $hoy) {
 <?php
 	}//Fin while $sql1
 }
-
+*/
 function headers(){
 ?>
 	<head>
